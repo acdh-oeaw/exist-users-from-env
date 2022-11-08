@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta xmlns="http://exist-db.org/xquery/repo">
+    <description>A package that create users and groups specified in the environment when it is installed</description>
+    <author>Omar Siam</author>
+    <author>Peter Stadler</author>
+    <website>https://github.com/acdh-oeaw/exist-users-from-env</website>
+    <status>alpha</status>
+    <license>Apache License 2.0</license>
+    <copyright>true</copyright>
+    <type>application</type>
+    <target>existufe</target>
+    <finish>post-install.xql</finish>
+</meta>
