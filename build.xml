@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project default="xar" name="mermeid">
+<project default="xar" name="existufe">
     
-    <property name="project.app" value="mermeid"/>
+    <property name="project.app" value="existufe"/>
     <property name="build.dir" value="build"/>
     
     <target name="clean">
@@ -18,11 +18,7 @@
             <fileset dir=".">
                 <include name="**/*.*"/>
                 <exclude name="${build.dir}/**"/>
-                <exclude name="build.xml"/>
-                <exclude name="Dockerfile"/>
-                <exclude name="jetty-exist-additional-config/**"/>
-                <exclude name="orbeon-additional-config/**"/>  
-                <exclude name="orbeon-form-runner.jar/**"/>                  
+                <exclude name="build.xml"/>              
                 <exclude name="*.patch"/>
                 <exclude name=".gitignore"/>
                 <exclude name=".git"/>
@@ -31,7 +27,6 @@
                 <exclude name="docker-compose.yml"/>
                 <exclude name="*build.properties"/>
                 <exclude name="*.template"/>
-                <exclude name="trunk/**"/>
             </fileset>
         </zip>
     </target>
