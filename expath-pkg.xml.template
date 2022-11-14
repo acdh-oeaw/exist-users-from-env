@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <package xmlns="http://expath.org/ns/pkg" name="https://github.com/acdh-oeaw/exist-users-from-env" abbrev="existufe"
     version="@repository.version@" spec="1.0">
-    <title>A package that create users and groups specified in the environment when it is installed</title>
+    <title>Users from env vars</title>
     <dependency processor="http://exist-db.org" semver-min="5.0.0"/>
     <dependency package="http://exist-db.org/apps/shared"/>
     <dependency package="http://www.functx.com"/>
