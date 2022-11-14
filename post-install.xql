@@ -49,7 +49,7 @@ declare function local:get-password-from-env($username as xs:string, $defaultpw 
 };
 
 declare function local:create-users($userGroupsMap as map(xs:string, xs:string*)) as empty-sequence() {
-  for $username in available-environment-variables()[. = 'EXIST_user_']!replace(., '^EXIST_user_([^_]+)_.*', '$1')
+  for $username in available-environment-variables()[starts-with(., 'EXIST_user_')]!replace(., '^EXIST_user_([^_]+)_.*', '$1')
   let $password := local:get-password-from-env($username, ())
     return if ($password) then
         (util:log-system-out("Creating user " || $username || "."),
