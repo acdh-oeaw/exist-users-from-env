@@ -18,11 +18,12 @@ declare function local:first-run() as xs:boolean {
 };
 
 declare function local:create-group() as map(xs:string, xs:string*) {
-    for $opt in available-environment-variables()[starts-with(., 'EXIST_group_')]
+  let $userGroupsMaps := for $opt in available-environment-variables()[starts-with(., 'EXIST_group_')]
     let $group := replace($opt, '^EXIST_group_', ''),
         $_ := sm:create-group($group),
         $users := tokenize(string(environment-variable($opt)), ',')!normalize-space(.)
     return map:merge($users!map{.: $group})
+  return map:merge(for $user in distinct-values($userGroupsMaps!map:keys(.)) return map{$user: $userGroupsMaps!.($user)})
 };
 
 declare function local:get-password-from-env($username as xs:string, $defaultpw as xs:string?) as xs:string? {
