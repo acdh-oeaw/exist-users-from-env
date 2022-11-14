@@ -1,5 +1,6 @@
 .DS_Store
 build/
+logs/
 *.xpr
 .idea/
 *.tmp

@@ -18,6 +18,7 @@
             <fileset dir=".">
                 <include name="**/*.*"/>
                 <exclude name="${build.dir}/**"/>
+                <exclude name="logs/**"/>
                 <exclude name="build.xml"/>              
                 <exclude name="*.patch"/>
                 <exclude name=".gitignore"/>
