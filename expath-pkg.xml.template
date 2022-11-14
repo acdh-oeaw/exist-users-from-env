@@ -3,7 +3,4 @@
     version="@repository.version@" spec="1.0">
     <title>Users from env vars</title>
     <dependency processor="http://exist-db.org" semver-min="5.0.0"/>
-    <dependency package="http://exist-db.org/apps/shared"/>
-    <dependency package="http://www.functx.com"/>
-    <dependency package="http://exist-db.org/apps/monex"/>
 </package>
