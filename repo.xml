@@ -3,7 +3,9 @@
     <description>A package that creates users and groups specified in the environment when it is installed</description>
     <author>Omar Siam</author>
     <author>Peter Stadler</author>
-    <author>ACDH-CH</author>    <website>https://github.com/acdh-oeaw/exist-users-from-env</website>
+    <author>Austrian Centre for Digital Humanities and Cultural Heritage at the Austrian Academy of Sciences</author>
+    <author>Paderborn University</author>
+    <website>https://github.com/acdh-oeaw/exist-users-from-env</website>
     <status>alpha</status>
     <license>Apache License 2.0</license>
     <copyright>true</copyright>
