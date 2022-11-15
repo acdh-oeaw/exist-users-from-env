@@ -20,8 +20,8 @@ jobs:
           java-version: 11
       - name: Build with Ant
         run: ant clean xar
-      - name: Archive xar package
-        uses: actions/upload-artifact@v3
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
-          name: xar-package
-          path: build/*.xar
+          files: |
+            build/*.xar
