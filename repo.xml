@@ -7,7 +7,7 @@
     <author>Paderborn University</author>
     <website>https://github.com/acdh-oeaw/exist-users-from-env</website>
     <status>alpha</status>
-    <license>Apache License 2.0</license>
+    <license>MIT</license>
     <copyright>true</copyright>
     <type>application</type>
     <target>existufe</target>
