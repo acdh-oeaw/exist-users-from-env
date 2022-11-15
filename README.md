@@ -20,12 +20,12 @@ So maybe you need to rename this package like `01_existufe-*.xar`.
 
 Environment variables
 ---------------------
-|                name                |                      value                      |                    note                     |
-| :--------------------------------: | :---------------------------------------------: | :-----------------------------------------: |
-|     EXIST_admin_password_file      |                   a filename                    |  references a file containing the password  |
-|        EXIST_admin_password        |                   a password                    | the password to set for the admin user [^1] |
-| EXIST_user_$username_password_file |                   a filename                    |  references a file containing the password  |
-|   EXIST_user_$username_password    |                   a password                    | the password to set for the admin user [^1] |
-|       EXIST_group_$groupname       | a comma separated list of members of that group |                                             |
+|                name                |                      value                      |                    note                                   |
+| :--------------------------------: | :---------------------------------------------: | :--------------------------------------------------------:|
+|     EXIST_admin_password_file      |                   a filename                    |  references a file containing the password                |
+|        EXIST_admin_password        |                   a password                    | the password to set for the admin user [^1]               |
+| EXIST_user_$username_password_file |                   a filename                    |  references a file containing the password                |
+|   EXIST_user_$username_password    |                   a password                    | the password to set for the user $username [^1]           |
+|       EXIST_group_$groupname       |                 group memebers                  |a comma separated list of members of that group $groupname |
 
 [^1]: Every program with access to the environment can read this secret. I a standard eXist-db container this is just eXist-db and there is no shell so it is reasonable secure
