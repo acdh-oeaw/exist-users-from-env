@@ -4,7 +4,7 @@ iex "docker run --rm -it -p 48080:8080 ```
   -v $(Resolve-Path $pwd\build\existufe*.xar)`:/exist/autodeploy/$(Resolve-Path $pwd\build\existufe*.xar | Split-Path -leaf) ```
   -e EXIST_admin_password=t3mp ```
   -e EXIST_user_test1_password=nix ```
-  -e EXIST_user_test2_password=dr1ng3nd ```
+  -e EXIST_user_test__2_password=dr1ng3nd ```
   -e EXIST_group_testgroup=test1 ```
-  -e EXIST_group_testgroup2=test1,test2 ```
+  -e EXIST_group_testgroup__2=test1,test2 ```
   acdhch/existdb:6.0.1-java11-ShenGC"

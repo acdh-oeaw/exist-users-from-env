@@ -19,7 +19,8 @@ declare function local:first-run() as xs:boolean {
 
 declare function local:create-group() as map(xs:string, xs:string*) {
   let $userGroupsMaps := for $opt in available-environment-variables()[starts-with(., 'EXIST_group_')]
-    let $group := replace($opt, '^EXIST_group_', ''),
+    let $group := replace($opt, '^EXIST_group_', '')
+               => replace('__', '-'),
         $_ := sm:create-group($group),
         $users := tokenize(string(environment-variable($opt)), ',')!normalize-space(.)
     return map:merge($users!map{.: $group})
@@ -50,7 +51,7 @@ declare function local:get-password-from-env($username as xs:string, $defaultpw 
 };
 
 declare function local:create-users($userGroupsMap as map(xs:string, xs:string*)) as empty-sequence() {
-  for $username in available-environment-variables()[starts-with(., 'EXIST_user_')]!replace(., '^EXIST_user_([^_]+)_.*', '$1')
+  for $username in available-environment-variables()[starts-with(., 'EXIST_user_')]!replace(., '^EXIST_user_(.+)_password.*'=> replace('__', '-'), '$1')
   let $password := local:get-password-from-env($username, ())
     return if ($password) then
         (util:log-system-out("Creating user " || $username || "."),
