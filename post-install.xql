@@ -19,8 +19,7 @@ declare function local:first-run() as xs:boolean {
 
 declare function local:create-group() as map(xs:string, xs:string*) {
   let $userGroupsMaps := for $opt in available-environment-variables()[starts-with(., 'EXIST_group_')]
-    let $group := replace($opt, '^EXIST_group_', '')
-               => replace('__', '-'),
+    let $group := replace(replace($opt, '^EXIST_group_', ''), '__', '-'),
         $_ := sm:create-group($group),
         $users := tokenize(string(environment-variable($opt)), ',')!normalize-space(.)
     return map:merge($users!map{.: $group})
@@ -36,8 +35,8 @@ declare function local:get-password-from-env($username as xs:string, $defaultpw 
         else
         (: process only one possible option to set the admin password with a preference for a secret file :)
         (
-        available-environment-variables()[. = 'EXIST_user_'||$username||'_password_file'],
-        available-environment-variables()[. = 'EXIST_user_'||$username||'_password']
+        available-environment-variables()[. = 'EXIST_user_'||replace($username, '-', '__')||'_password_file'],
+        available-environment-variables()[. = 'EXIST_user_'||replace($username, '-', '__')||'_password']
         )[1]
                
     let $password := if(ends-with($opt, '_password_file')) then 
@@ -51,7 +50,7 @@ declare function local:get-password-from-env($username as xs:string, $defaultpw 
 };
 
 declare function local:create-users($userGroupsMap as map(xs:string, xs:string*)) as empty-sequence() {
-  for $username in available-environment-variables()[starts-with(., 'EXIST_user_')]!replace(., '^EXIST_user_(.+)_password.*'=> replace('__', '-'), '$1')
+  for $username in available-environment-variables()[starts-with(., 'EXIST_user_')]!replace(replace(., '^EXIST_user_(.+)_password.*', '$1'), '__', '-')
   let $password := local:get-password-from-env($username, ())
     return if ($password) then
         (util:log-system-out("Creating user " || $username || "."),
