@@ -9,7 +9,10 @@ import module namespace file="http://exist-db.org/xquery/file";
 declare function local:set-admin-password() as empty-sequence() {
     let $passwd := local:get-password-from-env('admin', ())
     return if (not(empty($passwd)))
-    then sm:passwd('admin', $passwd)
+    then 
+        try { sm:passwd('admin', $passwd) }
+        catch java:org.exist.config.ConfigurationException { util:log-system-out('encountered known error: https://github.com/eXist-db/exist/issues/4722') }
+        catch * { util:log-system-out('encountered unknown error (' || $err:code || '): ' || $err:description) }
     else ()
 };
 
